@@ -16,7 +16,30 @@ punctuation), but do pass them on. */
 
 function rot13(str) { // LBH QVQ VG!
   
-  return str;
+  var strABC = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  var matcher = /[A-Z]/g;
+
+  var arrayStr = str.split('');
+  var arrayResult = [];
+
+  for (var i = 0; i < arrayStr.length; i++) {
+
+  	if(arrayStr[i].match(matcher)) {
+
+	  	var index = strABC.indexOf(arrayStr[i]);
+
+	  	index += 13;
+
+	  	if (index > strABC.length - 1) 
+	  		index -= strABC.length;
+
+	  	arrayResult[i] = strABC.charAt(index);
+  	} else {
+  		arrayResult[i] = arrayStr[i];
+  	}
+  }
+
+  return arrayResult.join('');
 }
 
 
